@@ -36,12 +36,13 @@ public function __construct(Date $date1, Date $date2)
 		public function toMonths()
 		{
 			// вернет разницу в месяцах
-			return abs(( ($this->sec1()-$this->sec2()  )/(3600*24) )/30);
+			return round(abs(( ($this->sec1()-$this->sec2()  )/(3600*24) )/30),1);
 		}
 		
 		public function toYears()
 		{
 			// вернет разницу в годах
+			return round(abs(((( ($this->sec1()-$this->sec2()  )/(3600*24) )/30))/12),1);
 		}
 	}
 
