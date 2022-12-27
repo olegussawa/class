@@ -1,4 +1,6 @@
 <?php
+
+new changes
 	interface iFile
 	{
 		public function __construct($filePath);
