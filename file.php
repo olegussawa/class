@@ -74,6 +74,36 @@ interface iFile
 				}
 				
 				
+				public function copy($copyPath){
+					
+					
+					//копирует файл
+				copy($this->Pathfile, $copyPath);
+					
+				}
+				
+				public function delete()
+				{
+					//удаляет
+					unlink($this->Pathfile);
+				}
+				
+				public function replace($newPath){
+					//перемещает файл
+					rename($this->Pathfile,$newPath);
+				}
+				
+				
+				public function rename($newName){
+					//переименовывает
+					$this->arr['basename']=$newName;
+				rename($this->Pathfile, $this->arr['dirname'].'\\'. $this->arr['basename']);
+				}
+	}
+	
+	
+	
+				
 	}
 	
 	
