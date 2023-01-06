@@ -10,6 +10,16 @@
 		->setAttr('class', 'eee bbb') // добавляем атрибут 'class'
 		->open(); // выведет <input id="test" class="eee bbb">*/
 
+
+
+
+//2 .Реализуйте метод removeAttr, который будет удалять переданный параметром атрибут. Сделайте так, чтобы этот метод также мог принимать участие в цепочке.
+
+
+
+
+
+
 class Tag
 	{
 		private $name;
@@ -42,6 +52,12 @@ class Tag
 			return "</$name>";
 		}
 		
+		//delete atribut
+		public function removeAtr($name){
+			unset ($this->arr[$name]);
+			return $this;
+			
+		}
 		
 		private function getatr(){
 			if(!empty($this->arr)){
