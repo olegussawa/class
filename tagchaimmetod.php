@@ -37,6 +37,16 @@ class Tag
 			
 		}
 		
+		//передача атрибутов массивом в цепочке
+		
+		public function setAtrs($attrs)
+	{
+		foreach ($attrs as $name => $val) {
+			$this->setAtr($name, $val);
+		}
+		
+		return $this;
+	}
 		
 	// Выводим открывающую часть тега:
 		public function open()
