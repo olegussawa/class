@@ -47,6 +47,26 @@ class Tag
 			
 		}
 		
+		
+		//удаление css свойства
+		
+		public function removeClass($classname){
+			
+			if(isset($this->arr['class'])){
+			 	$art=explode(' ',$this->arr['class']);
+				
+			 	for($i=0;$i<count($art);$i++){
+	            if($classname==$art[$i]){
+	                   unset ($art[$i]);}
+					   
+					   
+	$this->arr['class']=implode(' ',$art);
+}
+			 	return $this; 	
+			 }
+		}
+		
+		
 	// Выводим открывающую часть тега:
 		public function open()
 		{
