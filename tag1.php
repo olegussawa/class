@@ -1,10 +1,51 @@
 <?
+interface iTag
+	{
+		// Геттер имени:
+		public function getName();
+		
+		// Геттер текста:
+		public function getText();
+		
+		// Геттер всех атрибутов:
+		public function getAtrs();
+		
+		// Геттер одного атрибута по имени:
+		public function getAt($name);
+		
+		// Открывающий тег, текст и закрывающий тег:
+		public function show();
+		
+		// Открывающий тег:
+		public function open();
+		
+		// Закрывающий тег:
+		public function close();
+		
+		// Установка текста:
+		public function setText($text);
+		
+		// Установка атрибута:
+		public function setAtr($name, $val);
+		
+		// Установка атрибутов:
+		public function setAtrs($attrs);
+		
+		// Удаление атрибута:
+		public function removeAtr($name);
+		
+		// Установка класса:
+		public function addClass($classname);
+		
+		// Удаление класса:
+		public function removeClass($classname);
+	}
 
-
-class Tag
+class Tag implements iTag
 	{
 		private $name;
 		private $arr=[];
+		private $text;
 		
 		public function __construct($name)
 		{
@@ -35,6 +76,13 @@ class Tag
 		}
 		return $this;
 	}
+	
+	
+		public function setText($text){
+			$this->text=$text;
+		}
+		
+		
 		
 		public function removeAtr($name){
 			unset ($this->arr[$name]);
@@ -64,6 +112,15 @@ return $this;
 			$atrib=$this->getatr();
 			return "<$name $atrib>";
 		}
+		
+		
+		public function show()
+		{
+			return $this->open() . $this->text . $this->close();
+		}
+		
+		
+		
 		// Выводим закрывающую часть тега:
 		public function close()
 		{
@@ -84,32 +141,32 @@ return $this;
 	
 	public function getName()
 		{
-            return $this->name;
+                      return $this->name;
 			}
-	//геттер getText, возвращающий текст нашего тега (то есть значение свойства text).
+	//Реализуйте геттер getText, возвращающий текст нашего тега (то есть значение свойства text).
 	
 	
 	public function getText()
 		{
-			if(isset($this->arr['text'])){
-			return $this->arr['text'];
+			if(isset($this->text)){
+				return $this->text;
 			}
                       
 			}
-	//геттер getAttrs, возвращающий массив всех атрибутов тега (то есть значение свойства attrs).
+	//Реализуйте геттер getAttrs, возвращающий массив всех атрибутов тега (то есть значение свойства attrs).
 	
 	
-	public function getAttrs()
+	public function getAtrs()
 		{
 			return var_dump( $this->arr);
 			}
 	
-	  //геттер getAttr, параметром принимающий имя атрибута и возвращающий значение этого атрибута (а если такого атрибута нет - то null).
+	  //Реализуйте геттер getAttr, параметром принимающий имя атрибута и возвращающий значение этого атрибута (а если такого атрибута нет - то null).
 	  
 	  public function getAt($name)
 		{
 			if(isset($this->arr[$name])){
-			return $this->arr[$name];
+				return $this->arr[$name];
 			}
 			 return null;
 			}
@@ -138,3 +195,10 @@ return $this;
 	
 	
 ?>
+
+
+
+
+
+
+
